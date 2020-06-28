@@ -1,0 +1,51 @@
+///
+buildscript {
+    ext{
+        springBootVersion='2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// 스프링 내장 로깅 exclude
+/*
+configurations {
+    all {
+        exclude  group: "org.springframework.boot", module : "spring-boot-starter-logging"
+    }
+}
+*/
+
+dependencies {
+    // SLF4J-LogBack
+    compile("org.slf4j:slf4j-api:1.7.7")
+    compile('ch.qos.logback:logback-classic:1.2.3')
+    compile('ch.qos.logback:logback-core:1.2.3')
+    compile('ch.qos.logback:logback-access:1.2.3')
+
+    // logstash-logback encoder
+    compile ('net.logstash.logback:logstash-logback-encoder:6.4')
+}

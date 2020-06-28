@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: alpha
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: false
+  freemarker:
+    cache: false
+server:
+  port: 6060
